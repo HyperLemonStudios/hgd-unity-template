@@ -1,2 +1,2 @@
-# unity-example-hyper
-An example HyperGamesDev project setup
+# HGD Unity Template
+A template for HyperGamesDev projects setup
