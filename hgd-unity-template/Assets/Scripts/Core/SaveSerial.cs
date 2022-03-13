@@ -47,7 +47,7 @@ public class SaveSerial : MonoBehaviour{	public static SaveSerial instance;
 	[System.Serializable]public class SettingsData{
 		public bool scbuttons;
 		public bool vibrations;
-		public bool discordRPC;
+		public bool discordRPC=true;
 
 		public float masterVolume=0;
 		public float soundVolume=0;

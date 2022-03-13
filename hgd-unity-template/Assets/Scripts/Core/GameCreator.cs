@@ -7,13 +7,15 @@ using UnityEngine.EventSystems;
 using Sirenix.OdinInspector;
 
 public class GameCreator : MonoBehaviour{   public static GameCreator instance;
-    [SerializeField] GameObject saveSerialPrefab;
-    [SerializeField] GameObject gsceneManagerPrefab;
-    [SerializeField] GameObject gameSessionPrefab;
+    [AssetsOnly][SerializeField] GameObject saveSerialPrefab;
+    [AssetsOnly][SerializeField] GameObject gsceneManagerPrefab;
+    [AssetsOnly][SerializeField] GameObject gameSessionPrefab;
     
     [Header("Assets managers")]
-    [SerializeField] GameObject gameAssetsPrefab;
-    [SerializeField] GameObject audioManagerPrefab;
+    [AssetsOnly][SerializeField] GameObject gameAssetsPrefab;
+    [AssetsOnly][SerializeField] GameObject audioManagerPrefab;
+    [SerializeField] bool jukeboxCreate;
+    [AssetsOnly][SerializeField] GameObject jukeboxPrefab;
 
     
     [Header("Networking, Advancements etc")]
@@ -36,9 +38,11 @@ public class GameCreator : MonoBehaviour{   public static GameCreator instance;
         
         if(FindObjectOfType<GameAssets>()==null){Instantiate(gameAssetsPrefab);}
         if(FindObjectOfType<AudioManager>()==null){Instantiate(audioManagerPrefab);}
+        if(FindObjectOfType<Jukebox>()==null&&jukeboxCreate){Instantiate(jukeboxPrefab);}
 
+        if(FindObjectOfType<DiscordPresence.PresenceManager>()==null){Instantiate(discordPresencePrefab);}
 
-        if(FindObjectOfType<PostProcessVolume>()!=null&& FindObjectOfType<SaveSerial>().settingsData.pprocessing!=true){FindObjectOfType<PostProcessVolume>().enabled=false;}
+        if(FindObjectOfType<PostProcessVolume>()!=null&&FindObjectOfType<SaveSerial>().settingsData.pprocessing!=true){FindObjectOfType<PostProcessVolume>().enabled=false;}
 
     }
 }

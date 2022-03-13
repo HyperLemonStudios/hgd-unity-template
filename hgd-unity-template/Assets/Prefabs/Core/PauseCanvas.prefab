@@ -582,9 +582,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 1
-      - m_Target: {fileID: 4201300888754685035, guid: 1add75b3918809d4ca5c9a8d9b34efa7, type: 3}
-        m_TargetAssemblyTypeName: Level, Assembly-CSharp
-        m_MethodName: LoadStartMenu
+      - m_Target: {fileID: 6657877535408635772, guid: 1add75b3918809d4ca5c9a8d9b34efa7, type: 3}
+        m_TargetAssemblyTypeName: GSceneManager, Assembly-CSharp
+        m_MethodName: LoadStartMenuGame
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -695,7 +695,7 @@ MonoBehaviour:
   m_BlockingObjects: 0
   m_BlockingMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 55
 --- !u!114 &2392736167144779158
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -844,8 +844,8 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 1
-      - m_Target: {fileID: 4201300888754685035, guid: 1add75b3918809d4ca5c9a8d9b34efa7, type: 3}
-        m_TargetAssemblyTypeName: Level, Assembly-CSharp
+      - m_Target: {fileID: 6657877535408635772, guid: 1add75b3918809d4ca5c9a8d9b34efa7, type: 3}
+        m_TargetAssemblyTypeName: GSceneManager, Assembly-CSharp
         m_MethodName: RestartGame
         m_Mode: 1
         m_Arguments:

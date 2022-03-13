@@ -63,8 +63,8 @@ public class GameSession : MonoBehaviour{   public static GameSession instance;
             foreach(AudioSource sound in FindObjectsOfType<AudioSource>()){
                 if(sound!=null){
                     GameObject snd=sound.gameObject;
-                    //if(sound!=musicPlayer){
-                    if(snd.GetComponent<MusicPlayer>()==null){
+                    //if(sound!=Jukebox){
+                    if(snd.GetComponent<Jukebox>()==null){
                         //sound.pitch=1;
                         sound.Stop();
                     }
@@ -88,11 +88,11 @@ public class GameSession : MonoBehaviour{   public static GameSession instance;
     public void DeleteAll(){ SaveSerial.instance.Delete(); ResetSettings(); GSceneManager.instance.LoadStartMenu();}
     public void ResetSettings(){
         SaveSerial.instance.ResetSettings();
-        GSceneManager.instance.RestartScene();
+        GSceneManager.instance.ReloadScene();
         SaveSerial.instance.SaveSettings();
         var s=FindObjectOfType<SettingsMenu>();
     }
-    public void ResetMusicPitch(){if(FindObjectOfType<MusicPlayer>()!=null)FindObjectOfType<MusicPlayer>().GetComponent<AudioSource>().pitch=1;}
+    public void ResetMusicPitch(){if(FindObjectOfType<Jukebox>()!=null)if(FindObjectOfType<Jukebox>().GetComponent<AudioSource>()!=null)FindObjectOfType<Jukebox>().GetComponent<AudioSource>().pitch=1;}
     float settingsOpenTimer;
     public void CloseSettings(bool goToPause){
     if(GameSession.instance!=null){

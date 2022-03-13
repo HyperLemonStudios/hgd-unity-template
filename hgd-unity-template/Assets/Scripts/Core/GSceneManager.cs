@@ -1,15 +1,11 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class GSceneManager : MonoBehaviour{ public static GSceneManager instance;
-    private void Awake(){
-        GameSession.instance.gameSpeed=1f;
-        Time.timeScale=1f;
-        SetUpSingleton();
-    }
-    private void SetUpSingleton(){
+    void Awake(){
         if(GSceneManager.instance!=null){Destroy(gameObject);}else{instance=this;DontDestroyOnLoad(gameObject);}
     }
     void Update(){
@@ -57,30 +53,29 @@ public class GSceneManager : MonoBehaviour{ public static GSceneManager instance
         GameSession.instance.speedChanged=false;
         GameSession.instance.gameSpeed=1f;
     }
-    public void RestartScene(){
+    public void ReloadScene(){
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         GameSession.instance.speedChanged=false;
         GameSession.instance.gameSpeed=1f;
     }
     public void QuitGame(){Application.Quit();}
-    public void Restart(){
+    public void RestartApp(){
         SceneManager.LoadScene("Loading");
         GameSession.instance.speedChanged=false;
         GameSession.instance.gameSpeed=1f;
     }
-    void CheckESC(){
-    if(Input.GetKeyDown(KeyCode.Escape)){
-            var scene=SceneManager.GetActiveScene().name;
-            if(scene=="Credits"){
-                LoadStartMenu();
-            }else if(scene=="Options"){
-                if(FindObjectOfType<SettingsMenu>()!=null){
-                    if(FindObjectOfType<SettingsMenu>().transform.GetChild(1).gameObject.activeSelf==true){
-                        FindObjectOfType<SettingsMenu>().OpenSettings();
-                    }else{
-                        LoadStartMenu(); 
-                    }
-                }else Debug.LogError("No SettingsMenu");
-            }
+    void CheckESC(){	if(Input.GetKeyDown(KeyCode.Escape)){
+		var scene=SceneManager.GetActiveScene().name;
+		if(scene=="Credits"){
+			LoadStartMenu();
+		}else if(scene=="Options"){
+			if(FindObjectOfType<SettingsMenu>()!=null){
+				if(FindObjectOfType<SettingsMenu>().transform.GetChild(1).gameObject.activeSelf==true){
+					FindObjectOfType<SettingsMenu>().OpenSettings();
+				}else{
+					LoadStartMenu(); 
+				}
+			}else Debug.LogError("No SettingsMenu");
+		}
     }}
 }
